@@ -1,0 +1,14 @@
+Nov 24 09:10:12 server01 sshd[1001]: Accepted password for john from 192.168.1.10 port 5021 ssh2
+Nov 24 09:12:15 server01 sshd[1002]: Failed password for admin from 203.0.113.10 port 5022 ssh2
+Nov 24 09:12:18 server01 sshd[1003]: Failed password for admin from 203.0.113.10 port 5023 ssh2
+Nov 24 09:12:22 server01 sshd[1004]: Failed password for admin from 203.0.113.10 port 5024 ssh2
+Nov 24 09:15:30 server01 sshd[1005]: Accepted password for alice from 192.168.1.20 port 5025 ssh2
+Nov 24 09:18:45 server01 sshd[1006]: Failed password for root from 198.51.100.15 port 5026 ssh2
+Nov 24 09:18:49 server01 sshd[1007]: Failed password for root from 198.51.100.15 port 5027 ssh2
+Nov 24 09:20:10 server01 sshd[1008]: Invalid user test from 198.51.100.25 port 5028
+Nov 24 09:22:14 server01 sshd[1009]: Accepted password for david from 192.168.1.30 port 5029 ssh2
+Nov 24 09:25:30 server01 sshd[1010]: Failed password for guest from 203.0.113.10 port 5030 ssh2
+Nov 24 09:25:35 server01 sshd[1011]: Failed password for guest from 203.0.113.10 port 5031 ssh2
+Nov 24 09:30:20 server01 sshd[1012]: Accepted password for mary from 192.168.1.40 port 5032 ssh2
+Nov 24 09:35:10 server01 sshd[1013]: Invalid user backup from 198.51.100.25 port 5033
+Nov 24 09:40:12 server01 sshd[1014]: Failed password for root from 198.51.100.15 port 5034 ssh2

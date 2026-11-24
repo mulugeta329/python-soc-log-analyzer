@@ -67,3 +67,20 @@ This project is for educational purposes and uses simulated security logs. It fo
 ## Author
 
 Aspiring SOC Level 1 Analyst | Cybersecurity Enthusiast
+
+## Dataset Information
+
+The project uses simulated Linux SSH authentication logs.
+
+The dataset includes:
+
+- Successful authentication events.
+- Failed authentication attempts.
+- Invalid username attempts.
+- Multiple source IP addresses.
+- Multiple user accounts.
+
+These events are used for practicing
+security log analysis and threat detection.
+
+Dataset file: logs/auth.log
