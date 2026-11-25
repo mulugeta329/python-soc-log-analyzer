@@ -9,6 +9,8 @@ from analyzer.detection import (
 
 from analyzer.report_generator import generate_csv_report
 
+from dashboard.visualize import generate_visualizations
+
 
 def main():
 
@@ -64,6 +66,9 @@ def main():
     report_path = generate_csv_report(alerts)
 
     print("\nReport saved to:", report_path)
+
+    # Generate security visualizations
+    generate_visualizations(events, alerts)
 
     print("\n" + "=" * 50)
     print("              ANALYSIS COMPLETE")

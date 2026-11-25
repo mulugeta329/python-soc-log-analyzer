@@ -180,3 +180,37 @@ applications for further investigation.
 | Severity classification | Completed |
 | CSV report generation   | Completed |
 | Data visualization      | Planned   |
+
+
+### 6. Security Event Visualization
+
+The project uses Matplotlib to visualize authentication
+events and detected security alerts.
+
+Generated visualizations:
+
+1. Failed login attempts by username.
+2. Failed login attempts by source IP address.
+3. Security alert severity distribution.
+
+Chart output directory:
+
+`dashboard/`
+
+The visualizations help analysts understand
+authentication activity and identify patterns
+in the simulated dataset.
+
+## Current Project Status
+
+| Feature                      | Status    |
+
+| Project setup                | Completed |
+| Simulated log dataset        | Completed |
+| Log parser                   | Completed |
+| Failed login detection       | Completed |
+| Suspicious IP detection      | Completed |
+| Severity classification      | Completed |
+| CSV report generation        | Completed |
+| Security event visualization | Completed |
+| Final documentation          | Planned   |
