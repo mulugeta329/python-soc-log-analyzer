@@ -84,3 +84,33 @@ These events are used for practicing
 security log analysis and threat detection.
 
 Dataset file: logs/auth.log
+
+## Implemented Features
+
+### 1. Linux Authentication Log Parsing
+- Reads simulated Linux SSH authentication logs.
+- Extracts timestamps, usernames, source IPs and event types.
+- Recognizes successful, failed and invalid-user events.
+
+### 2. Failed Login Detection
+- Detects failed SSH password attempts.
+- Counts failed login attempts.
+- Identifies targeted usernames.
+
+### 3. Suspicious IP Detection
+- Groups failed login attempts by source IP.
+- Identifies IP addresses reaching a configurable threshold.
+- Uses a default threshold of 3 failed attempts.
+
+## Current Project Status
+
+| Feature | Status |
+|---|---|
+| Project setup | Completed |
+| Simulated log dataset | Completed |
+| Log parser | Completed |
+| Failed login detection | Completed |
+| Suspicious IP detection | Completed |
+| Severity classification | Planned |
+| CSV report generation | Planned |
+| Data visualization | Planned |
