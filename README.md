@@ -146,3 +146,37 @@ should be tuned for a real environment.
 | Severity classification | Completed |
 | CSV report generation   | Planned |
 | Data visualization      | Planned |
+
+
+### 5. CSV Security Report Generation
+
+The analyzer automatically exports detected security
+alerts into a CSV file.
+
+Report location:
+
+`reports/security_alerts.csv`
+
+Report fields:
+
+- Timestamp
+- Source IP address
+- Failed login attempts
+- Alert severity
+- Alert description
+
+The CSV report can be opened using spreadsheet
+applications for further investigation.
+
+## Current Project Status
+
+| Feature                 | Status    |
+
+| Project setup           | Completed |
+| Simulated log dataset   | Completed |
+| Log parser | Completed  |
+| Failed login detection  | Completed |
+| Suspicious IP detection | Completed |
+| Severity classification | Completed |
+| CSV report generation   | Completed |
+| Data visualization      | Planned   |

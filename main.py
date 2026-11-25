@@ -7,6 +7,8 @@ from analyzer.detection import (
     generate_severity_alerts
 )
 
+from analyzer.report_generator import generate_csv_report
+
 
 def main():
 
@@ -57,6 +59,11 @@ def main():
             )
     else:
         print("No alerts generated.")
+
+    # Generate CSV report
+    report_path = generate_csv_report(alerts)
+
+    print("\nReport saved to:", report_path)
 
     print("\n" + "=" * 50)
     print("              ANALYSIS COMPLETE")
