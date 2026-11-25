@@ -104,13 +104,45 @@ Dataset file: logs/auth.log
 
 ## Current Project Status
 
-| Feature | Status |
-|---|---|
-| Project setup | Completed |
-| Simulated log dataset | Completed |
-| Log parser | Completed |
-| Failed login detection | Completed |
+| Feature                 | Status |
+|---|                          ---|
+| Project setup           | Completed |
+| Simulated log dataset   | Completed |
+| Log parser | Completed  |
+| Failed login detection  | Completed |
 | Suspicious IP detection | Completed |
 | Severity classification | Planned |
-| CSV report generation | Planned |
-| Data visualization | Planned |
+| CSV report generation   | Planned |
+| Data visualization      | Planned |
+
+### 4. Alert Severity Classification
+
+The analyzer assigns severity levels to suspicious
+source IP addresses based on failed authentication counts.
+
+| Failed Attempts | Severity |
+|---              |---|
+| 1–2             | LOW    |
+| 3–4             | MEDIUM |
+| 5 or more       | HIGH   |
+
+Features:
+- Automatic severity classification.
+- Configurable detection thresholds.
+- Structured security alert generation.
+
+These thresholds are educational examples and
+should be tuned for a real environment.
+
+## Current Project Status
+
+| Feature                 | Status |
+|---|---|
+| Project setup           | Completed |
+| Simulated log dataset   | Completed |
+| Log parser | Completed  |
+| Failed login detection  | Completed |
+| Suspicious IP detection | Completed |
+| Severity classification | Completed |
+| CSV report generation   | Planned |
+| Data visualization      | Planned |

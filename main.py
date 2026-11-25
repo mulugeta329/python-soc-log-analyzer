@@ -1,8 +1,10 @@
 
 from analyzer.log_parser import parse_log_file
+
 from analyzer.detection import (
     detect_failed_logins,
-    detect_suspicious_ips
+    detect_suspicious_ips,
+    generate_severity_alerts
 )
 
 
@@ -14,16 +16,18 @@ def main():
     # Detect failed login attempts
     failed_results = detect_failed_logins(events)
 
-    # Identify suspicious source IPs
+    # Detect suspicious source IP addresses
     suspicious_ips = detect_suspicious_ips(
         events,
         threshold=3
     )
 
-    # Display analysis results
-    print("=" * 45)
-    print("          PYTHON SOC LOG ANALYZER")
-    print("=" * 45)
+    # Generate severity alerts
+    alerts = generate_severity_alerts(suspicious_ips)
+
+    print("=" * 50)
+    print("           PYTHON SOC LOG ANALYZER")
+    print("=" * 50)
 
     print("\n[GENERAL STATISTICS]")
     print("Total authentication events:", len(events))
@@ -40,11 +44,23 @@ def main():
         for ip, count in suspicious_ips.items():
             print(f"{ip}: {count} failed attempts")
     else:
-        print("No IP addresses reached the detection threshold.")
+        print("No suspicious IP addresses detected.")
 
-    print("\n" + "=" * 45)
-    print("             ANALYSIS COMPLETE")
-    print("=" * 45)
+    print("\n[SECURITY ALERTS]")
+
+    if alerts:
+        for alert in alerts:
+            print(
+                f"IP: {alert['source_ip']} | "
+                f"Attempts: {alert['failed_attempts']} | "
+                f"Severity: {alert['severity']}"
+            )
+    else:
+        print("No alerts generated.")
+
+    print("\n" + "=" * 50)
+    print("              ANALYSIS COMPLETE")
+    print("=" * 50)
 
 
 if __name__ == "__main__":
