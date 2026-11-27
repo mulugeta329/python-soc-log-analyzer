@@ -2,7 +2,7 @@
        SECURITY INCIDENT SUMMARY
 ==================================================
 
-Report generated: 2026-11-27 09:20:32
+Report generated: 2026-11-27 09:43:34
 
 [GENERAL STATISTICS]
 Total authentication events: 14

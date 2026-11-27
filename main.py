@@ -2,6 +2,7 @@
 from analyzer.log_parser import parse_log_file
 
 from analyzer.detection import (
+    analyze_authentication_events,
     detect_failed_logins,
     detect_suspicious_ips,
     generate_severity_alerts
@@ -20,6 +21,9 @@ def main():
     # Read authentication logs
     events = parse_log_file("logs/auth.log")
 
+    # Analyze authentication event categories
+    authentication_stats = analyze_authentication_events(events)
+
     # Detect failed login attempts
     failed_results = detect_failed_logins(events)
 
@@ -36,9 +40,11 @@ def main():
     print("           PYTHON SOC LOG ANALYZER")
     print("=" * 50)
 
-    print("\n[GENERAL STATISTICS]")
-    print("Total authentication events:", len(events))
-    print("Failed login attempts:", failed_results["total_failed"])
+    print("\n[AUTHENTICATION EVENT STATISTICS]")
+    print("Total events:", authentication_stats["total_events"])
+    print("Successful logins:", authentication_stats["successful_logins"])
+    print("Failed logins:", authentication_stats["failed_logins"])
+    print("Invalid usernames:", authentication_stats["invalid_users"])
 
     print("\n[FAILED LOGIN ATTEMPTS BY USERNAME]")
 
@@ -69,7 +75,7 @@ def main():
     report_path = generate_csv_report(alerts)
     print("\nCSV report saved to:", report_path)
 
-    # Generate incident summary report
+    # Generate incident summary
     summary_path = generate_incident_summary(
         events,
         failed_results,
@@ -79,7 +85,7 @@ def main():
 
     print("Incident summary saved to:", summary_path)
 
-    # Generate security visualizations
+    # Generate visualizations
     generate_visualizations(events, alerts)
 
     print("\n" + "=" * 50)
