@@ -133,7 +133,7 @@ Charts are saved in the `dashboard/` directory.
 ### Step 1: Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/mulugetaberhe386/python-soc-log-analyzer.git
 ```
 
 ### Step 2: Enter the project directory
