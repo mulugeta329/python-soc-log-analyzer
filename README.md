@@ -1,163 +1,111 @@
+
 # Python SOC Log Analyzer
+
+A Python-based Security Operations Center (SOC) project
+that analyzes simulated Linux SSH authentication logs,
+detects repeated failed login attempts, classifies
+security alerts, and generates reports and visualizations.
 
 ## Project Overview
 
-The Python SOC Log Analyzer is a cybersecurity project designed to simulate basic Security Operations Center (SOC) Level 1 analyst activities.
+This project simulates a basic SOC Level 1 (L1) log
+analysis workflow.
 
-It analyzes authentication logs, identifies suspicious login attempts, detects repeated failed logins, and generates security alerts using Python.
+It processes Linux SSH authentication logs to identify
+repeated failed login attempts from source IP addresses.
 
-## Objectives
+The analyzer generates security alerts, exports them
+to CSV, and creates visualizations to help understand
+authentication activity.
 
-- Analyze Linux authentication log files.
-- Identify failed and successful login attempts.
-- Detect suspicious IP addresses.
-- Identify repeated authentication failures.
-- Classify security alerts based on severity.
-- Generate security investigation reports.
-- Visualize authentication activities.
+## Project Objectives
 
-## Technologies
+- Practice Python programming for cybersecurity.
+- Understand Linux authentication logs.
+- Extract useful information using regular expressions.
+- Detect repeated failed login attempts.
+- Identify source IP addresses with repeated failures.
+- Classify alerts by severity.
+- Generate CSV security reports.
+- Visualize security events using Matplotlib.
+
+## Technologies Used
 
 - Python 3
-- Regular Expressions
-- Collections
-- Pandas
+- Regular Expressions (Regex)
+- Collections module
+- CSV module
 - Matplotlib
-- CSV
-
-## Project Features
-
-1. Authentication log parsing.
-2. Failed login detection.
-3. Suspicious IP identification.
-4. Alert severity classification.
-5. CSV report generation.
-6. Security event visualization.
+- Pandas (listed as a project dependency)
 
 ## Project Structure
 
 ```text
 python-soc-log-analyzer/
+│
 ├── analyzer/
+│   ├── log_parser.py
+│   ├── detection.py
+│   └── report_generator.py
+│
 ├── dashboard/
+│   ├── visualize.py
+│   ├── failed_logins_by_username.png
+│   ├── failed_logins_by_ip.png
+│   └── alert_severity_distribution.png
+│
 ├── logs/
+│   └── auth.log
+│
 ├── reports/
+│   └── security_alerts.csv
+│
 ├── main.py
 ├── requirements.txt
 └── README.md
 ```
 
-## Learning Outcomes
-
-- Security log analysis.
-- Authentication event monitoring.
-- Basic threat detection.
-- Security alert investigation.
-- Python automation.
-- SOC incident documentation.
-
-## Project Status
-
-In Progress.
-
-## Disclaimer
-
-This project is for educational purposes and uses simulated security logs. It focuses on defensive cybersecurity and SOC analysis.
-
-## Author
-
-Aspiring SOC Level 1 Analyst | Cybersecurity Enthusiast
-
-## Dataset Information
-
-The project uses simulated Linux SSH authentication logs.
-
-The dataset includes:
-
-- Successful authentication events.
-- Failed authentication attempts.
-- Invalid username attempts.
-- Multiple source IP addresses.
-- Multiple user accounts.
-
-These events are used for practicing
-security log analysis and threat detection.
-
-Dataset file: logs/auth.log
-
 ## Implemented Features
 
 ### 1. Linux Authentication Log Parsing
+
 - Reads simulated Linux SSH authentication logs.
-- Extracts timestamps, usernames, source IPs and event types.
+- Extracts timestamps, hostnames and process IDs.
+- Extracts usernames, source IP addresses and ports.
 - Recognizes successful, failed and invalid-user events.
 
 ### 2. Failed Login Detection
+
 - Detects failed SSH password attempts.
 - Counts failed login attempts.
 - Identifies targeted usernames.
 
 ### 3. Suspicious IP Detection
-- Groups failed login attempts by source IP.
+
+- Groups failed password attempts by source IP.
 - Identifies IP addresses reaching a configurable threshold.
 - Uses a default threshold of 3 failed attempts.
 
-## Current Project Status
-
-| Feature                 | Status |
-|---|                          ---|
-| Project setup           | Completed |
-| Simulated log dataset   | Completed |
-| Log parser | Completed  |
-| Failed login detection  | Completed |
-| Suspicious IP detection | Completed |
-| Severity classification | Planned |
-| CSV report generation   | Planned |
-| Data visualization      | Planned |
-
 ### 4. Alert Severity Classification
 
-The analyzer assigns severity levels to suspicious
-source IP addresses based on failed authentication counts.
+The project assigns severity based on failed login counts:
 
 | Failed Attempts | Severity |
-|---              |---|
-| 1–2             | LOW    |
-| 3–4             | MEDIUM |
-| 5 or more       | HIGH   |
-
-Features:
-- Automatic severity classification.
-- Configurable detection thresholds.
-- Structured security alert generation.
-
-These thresholds are educational examples and
-should be tuned for a real environment.
-
-## Current Project Status
-
-| Feature                 | Status |
 |---|---|
-| Project setup           | Completed |
-| Simulated log dataset   | Completed |
-| Log parser | Completed  |
-| Failed login detection  | Completed |
-| Suspicious IP detection | Completed |
-| Severity classification | Completed |
-| CSV report generation   | Planned |
-| Data visualization      | Planned |
+| 1–2 | LOW |
+| 3–4 | MEDIUM |
+| 5 or more | HIGH |
 
+These are educational example thresholds, not
+universal SOC standards.
 
 ### 5. CSV Security Report Generation
 
-The analyzer automatically exports detected security
-alerts into a CSV file.
-
-Report location:
+The analyzer exports security alerts to:
 
 `reports/security_alerts.csv`
 
-Report fields:
+The report includes:
 
 - Timestamp
 - Source IP address
@@ -165,52 +113,131 @@ Report fields:
 - Alert severity
 - Alert description
 
-The CSV report can be opened using spreadsheet
-applications for further investigation.
-
-## Current Project Status
-
-| Feature                 | Status    |
-
-| Project setup           | Completed |
-| Simulated log dataset   | Completed |
-| Log parser | Completed  |
-| Failed login detection  | Completed |
-| Suspicious IP detection | Completed |
-| Severity classification | Completed |
-| CSV report generation   | Completed |
-| Data visualization      | Planned   |
-
-
 ### 6. Security Event Visualization
 
-The project uses Matplotlib to visualize authentication
-events and detected security alerts.
+The project uses Matplotlib to generate:
 
-Generated visualizations:
+- Failed login attempts by username.
+- Failed login attempts by source IP.
+- Security alert severity distribution.
 
-1. Failed login attempts by username.
-2. Failed login attempts by source IP address.
-3. Security alert severity distribution.
+Charts are saved in the `dashboard/` directory.
 
-Chart output directory:
+## Installation
 
-`dashboard/`
+### Requirements
 
-The visualizations help analysts understand
-authentication activity and identify patterns
-in the simulated dataset.
+- Python 3
+- pip
 
-## Current Project Status
+### Step 1: Clone the repository
 
-| Feature                      | Status    |
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
 
-| Project setup                | Completed |
-| Simulated log dataset        | Completed |
-| Log parser                   | Completed |
-| Failed login detection       | Completed |
-| Suspicious IP detection      | Completed |
-| Severity classification      | Completed |
-| CSV report generation        | Completed |
-| Security event visualization | Completed |
-| Final documentation          | Planned   |
+### Step 2: Enter the project directory
+
+```bash
+cd python-soc-log-analyzer
+```
+
+### Step 3: Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Run the analyzer
+
+```bash
+python main.py
+```
+
+## Sample Analysis Results
+
+Using the included simulated dataset, the analyzer
+should identify:
+
+- Total authentication events: 14
+- Failed password attempts: 8
+- Most frequent failed-login source: 203.0.113.10
+- Failed attempts from that source: 5
+- High severity alerts: 1
+- Medium severity alerts: 1
+
+## Generated Outputs
+
+### CSV Report
+
+`reports/security_alerts.csv`
+
+### Visualizations
+
+- `dashboard/failed_logins_by_username.png`
+- `dashboard/failed_logins_by_ip.png`
+- `dashboard/alert_severity_distribution.png`
+
+## Project Screenshots
+
+### 1. Project Structure
+![Project Structure](screenshots/project_structure.png)
+
+### 2. Program Execution
+![Terminal Output](screenshots/terminal_output.png)
+
+### 3. Failed Logins by Username
+![Username Analysis](screenshots/failed_logins_by_username.png)
+
+### 4. Failed Logins by Source IP
+![IP Analysis](screenshots/failed_logins_by_ip.png)
+
+### 5. Alert Severity Distribution
+![Severity Analysis](screenshots/alert_severity_distribution.png)
+
+
+## Limitations
+
+- The project uses a simulated authentication dataset.
+- Detection counts failed password events across the
+  entire input file rather than a time window.
+- Invalid-user events are parsed but are not included
+  in the current failed-password IP detection count.
+- Severity thresholds are simple educational rules.
+- A repeated failed login does not automatically prove
+  malicious activity.
+
+## Future Improvements
+
+- Add time-based failed-login detection.
+- Include invalid-user events in detection rules.
+- Add automated unit tests.
+- Improve alert investigation details.
+- Integrate with a SIEM platform such as Wazuh.
+- Add an interactive dashboard.
+
+## Learning Outcomes
+
+Through this project, I practiced:
+
+- Python programming.
+- Regular expression pattern matching.
+- Linux SSH authentication log analysis.
+- Basic security event detection.
+- Alert severity classification.
+- CSV report generation.
+- Data visualization.
+- Git and GitHub version control.
+
+## Disclaimer
+
+This project is for educational and defensive
+cybersecurity learning purposes only.
+
+It uses simulated authentication logs and does not
+perform attacks or access real systems.
+
+## Author
+
+Created as a cybersecurity learning project
+focused on SOC Level 1 analyst skills.
