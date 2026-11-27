@@ -7,7 +7,10 @@ from analyzer.detection import (
     generate_severity_alerts
 )
 
-from analyzer.report_generator import generate_csv_report
+from analyzer.report_generator import (
+    generate_csv_report,
+    generate_incident_summary
+)
 
 from dashboard.visualize import generate_visualizations
 
@@ -64,8 +67,17 @@ def main():
 
     # Generate CSV report
     report_path = generate_csv_report(alerts)
+    print("\nCSV report saved to:", report_path)
 
-    print("\nReport saved to:", report_path)
+    # Generate incident summary report
+    summary_path = generate_incident_summary(
+        events,
+        failed_results,
+        suspicious_ips,
+        alerts
+    )
+
+    print("Incident summary saved to:", summary_path)
 
     # Generate security visualizations
     generate_visualizations(events, alerts)

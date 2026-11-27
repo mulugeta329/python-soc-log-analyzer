@@ -196,6 +196,22 @@ should identify:
 ![Severity Analysis](screenshots/alert_severity_distribution.png)
 
 
+
+## Incident Summary Report
+
+The analyzer automatically generates a text-based security incident summary.
+
+The report includes:
+- Total authentication events
+- Failed login attempts
+- Suspicious source IP addresses
+- Security alert severity
+- Recommended defensive actions
+
+**Generated report:**
+`reports/incident_summary.txt`
+
+
 ## Limitations
 
 - The project uses a simulated authentication dataset.
