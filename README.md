@@ -225,6 +225,23 @@ Events are plotted chronologically using their timestamps.
 
 **Generated chart:** `dashboard/authentication_timeline.png`
 
+## Time-Based Suspicious Login Detection
+
+The analyzer detects repeated failed SSH login attempts from the same source IP within a configurable time window.
+
+**Detection configuration:**
+- Time window: 60 seconds
+- Alert threshold: 3 failed attempts
+- Alert severity: HIGH
+
+**Detection output includes:**
+- Suspicious source IP address
+- Number of failed attempts
+- Detection time range
+- Alert severity
+
+This feature helps identify rapid repeated authentication failures that may indicate password-guessing activity.
+
 ## Limitations
 
 - The project uses a simulated authentication dataset.

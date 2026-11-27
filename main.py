@@ -8,6 +8,8 @@ from analyzer.detection import (
     generate_severity_alerts
 )
 
+from analyzer.time_detection import detect_time_based_attacks
+
 from analyzer.report_generator import (
     generate_csv_report,
     generate_incident_summary
@@ -35,6 +37,13 @@ def main():
 
     # Generate severity alerts
     alerts = generate_severity_alerts(suspicious_ips)
+
+    # Detect repeated failed logins within a time window
+    time_based_alerts = detect_time_based_attacks(
+        events,
+        threshold=3,
+        window_seconds=60
+    )
 
     print("=" * 50)
     print("           PYTHON SOC LOG ANALYZER")
@@ -70,6 +79,25 @@ def main():
             )
     else:
         print("No alerts generated.")
+
+    # Display time-based detection results
+    print("\n[TIME-BASED SUSPICIOUS LOGIN DETECTION]")
+    print("Detection window: 60 seconds")
+    print("Alert threshold: 3 failed attempts")
+
+    if time_based_alerts:
+        for alert in time_based_alerts:
+            print(
+                f"IP: {alert['source_ip']} | "
+                f"Attempts: {alert['failed_attempts']} | "
+                f"Severity: {alert['severity']}"
+            )
+            print(
+                f"Time range: {alert['first_attempt']} "
+                f"to {alert['last_attempt']}"
+            )
+    else:
+        print("No time-based suspicious activity detected.")
 
     # Generate CSV report
     report_path = generate_csv_report(alerts)
