@@ -212,6 +212,19 @@ The report includes:
 `reports/incident_summary.txt`
 
 
+## Authentication Activity Timeline
+
+The project generates a timeline visualization of SSH authentication events.
+
+The chart displays:
+- Successful login events
+- Failed login attempts
+- Invalid username events
+
+Events are plotted chronologically using their timestamps.
+
+**Generated chart:** `dashboard/authentication_timeline.png`
+
 ## Limitations
 
 - The project uses a simulated authentication dataset.
